@@ -1,4 +1,12 @@
-.projects
-  -@projects.each do |p|
-    .project= p.name
-
+%table#projects.tablesorter
+  %thead
+    %tr
+      %th Projektin nimi
+      %th Projektin kuvaus
+      %th Joku kenttä
+  %tbody
+    -@projects.each do |p|
+      %tr
+        %td= p.name
+        %td= p.description
+        %td= p.id
