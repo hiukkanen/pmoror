@@ -18,6 +18,7 @@ group :test do
   # bundler requires these gems while running tests
     gem "rspec"
     gem "rspec-rails"
+    gem "factory_girl"
   # gem "blueprints"
   # gem "faker"
 end
