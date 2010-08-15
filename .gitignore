@@ -18,3 +18,5 @@ db/*.sqlite3
 *.tmproj
 *.sw?
 .rvmrc
+public/stylesheets/application.css
+.sass-cache/
