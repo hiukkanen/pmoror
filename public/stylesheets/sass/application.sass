@@ -1,9 +1,9 @@
-$color_1 = #D9B759
-$color_2 = #FCEAB8
-$color_3 = #C4AF76
-$color_4 = #D6813C
-$color_text = #2B2622
- 
+$color_1: #d9b759
+$color_2: #fceab8
+$color_3: #c4af76
+$color_4: #d6813c
+$color_text: #2b2622
+
 body
   color: $color_text
 
@@ -27,14 +27,20 @@ div.card ul
 div.card ul li
   padding-left: 10px
 
-@mixin horizontal-gradient($background_color, $foreground_color, $first_stop, $second_stop)
-  background: -webkit-gradient(linear, left top, right top, color-stop(0.0, $background_color), color-stop($first_stop, $foreground_color), color-stop($second_stop, $foreground_color), color-stop(1.0, $background_color))
- 
-$first_stop = 0.15
-$second_stop = 0.85
+=horizontal-gradient($background_color, $foreground_color, $first_stop, $second_stop)
+  background: -webkit-gradient(linear, left top, right top, color-stop(0, $background_color), color-stop($first_stop, $foreground_color), color-stop($second_stop, $foreground_color), color-stop(1, $background_color))
+
+$first_stop: 0.15
+$second_stop: 0.85
 
 div.card ul > *:nth-child(2n+1)
-  @include horizontal-gradient($color_1, $color_2, $first_stop, $second_stop)
+  +horizontal-gradient($color_1, $color_2, $first_stop, $second_stop)
 
 div.card ul > *:nth-child(2n+2)
-  @include horizontal-gradient($color_1, $color_3, $first_stop, $second_stop)
+  +horizontal-gradient($color_1, $color_3, $first_stop, $second_stop)
+
+td.task
+  cursor: pointer
+
+td.task:hover
+  background-color: lightblue
