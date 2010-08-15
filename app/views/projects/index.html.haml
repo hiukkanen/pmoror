@@ -3,10 +3,16 @@
     %tr
       %th Projektin nimi
       %th Projektin kuvaus
-      %th Joku kenttä
+      -Project.task_names.each do |t|
+        %th= t.to_s
   %tbody
     -@projects.each do |p|
       %tr
         %td= p.name
         %td= p.description
-        %td= p.id
+        -p.tasks_in_order!.each do |t|
+          %td{:class => "jomama"}= t.status!.id
+.new-project
+  -form_for @project do |f|
+    =f.text_field :name
+    =f.text_field :description
