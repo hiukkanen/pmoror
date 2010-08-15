@@ -9,7 +9,7 @@ class Task < ActiveRecord::Base
   end
 
   def ready?
-    self.status.ready?
+    self.status!.ready?
   end
 
 end

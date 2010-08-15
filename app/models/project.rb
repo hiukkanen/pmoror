@@ -26,11 +26,11 @@ class Project < ActiveRecord::Base
     end
     self.tasks = tasks
     self.save!
-    tasks
+    self.tasks
   end
 
   def all_ready?
-    self.tasks.each do |t|
+    self.tasks!.each do |t|
       return false unless t.ready?
     end
     true
