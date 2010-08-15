@@ -3,7 +3,7 @@ class Status < ActiveRecord::Base
   validates_presence_of :task, :code
 
   def number_of_phases
-    4
+    3
   end
 
   def next
@@ -12,7 +12,7 @@ class Status < ActiveRecord::Base
   end
 
   def colors
-    ["red", "blue", "yellow", "green"]
+    ["#CC5D4C", "#FFFEC6", "#C7D1AF"]
   end
 
   def color
