@@ -11,7 +11,7 @@
         %td= p.name
         %td= p.description
         -p.tasks_in_order!.each do |t|
-          %td{:class => "jomama"}= t.status!.id
+          %td{:class => "task", "data-id" => t.id}= t.status!.code
 .new-project
   -form_for @project do |f|
     =f.text_field :name
