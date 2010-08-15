@@ -29,4 +29,11 @@ class Project < ActiveRecord::Base
     tasks
   end
 
+  def all_ready?
+    self.tasks.each do |t|
+      return false unless t.ready?
+    end
+    true
+  end
+
 end

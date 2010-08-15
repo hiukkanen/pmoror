@@ -9,7 +9,11 @@ function clickable_tasks(){
         url: "/tasks/next?id="+id,
         async: false
       }).responseText;
-      $(this).css("background-color", "red");
+      if( background == "!ready") {
+        location.reload();
+        return;
+      }
+      $(this).css("background-color", background);
   });
 }
 $(document).ready(function() {

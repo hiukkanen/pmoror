@@ -7,4 +7,9 @@ class Task < ActiveRecord::Base
     self.status = Status.create! :task => self unless self.status != nil
     self.status
   end
+
+  def ready?
+    self.status.ready?
+  end
+
 end

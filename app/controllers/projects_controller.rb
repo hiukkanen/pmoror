@@ -2,6 +2,7 @@ class ProjectsController < ApplicationController
 
   def index
     @projects = Project.all
+    @projects.delete_if { |p| p.all_ready? }
     @project = Project.new
   end
 
