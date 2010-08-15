@@ -1,0 +1,40 @@
+$color_1 = #D9B759
+$color_2 = #FCEAB8
+$color_3 = #C4AF76
+$color_4 = #D6813C
+$color_text = #2B2622
+ 
+body
+  color: $color_text
+
+div.borders
+  border: 1px solid red
+
+div.card
+  background-color: $color_1
+  text-align: center
+  margin-top: 4px
+  margin-bottom: 4px
+  padding: 5px
+  -webkit-border-radius: 5px
+
+div.card ul
+  list-style-type: none
+  margin: 0px
+  padding: 0px
+
+//  -webkit-border-radius: 5px
+div.card ul li
+  padding-left: 10px
+
+@mixin horizontal-gradient($background_color, $foreground_color, $first_stop, $second_stop)
+  background: -webkit-gradient(linear, left top, right top, color-stop(0.0, $background_color), color-stop($first_stop, $foreground_color), color-stop($second_stop, $foreground_color), color-stop(1.0, $background_color))
+ 
+$first_stop = 0.15
+$second_stop = 0.85
+
+div.card ul > *:nth-child(2n+1)
+  @include horizontal-gradient($color_1, $color_2, $first_stop, $second_stop)
+
+div.card ul > *:nth-child(2n+2)
+  @include horizontal-gradient($color_1, $color_3, $first_stop, $second_stop)
