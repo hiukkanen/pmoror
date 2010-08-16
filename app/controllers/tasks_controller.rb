@@ -9,4 +9,12 @@ class TasksController < ApplicationController
       render :text => "!ready"
     end
   end
+
+  def comment
+    task = Task.find params[:id]
+    comment = params[:value]
+    task.status.comment = comment
+    task.status.save!
+    render :text => params[:value]
+  end
 end

@@ -11,7 +11,7 @@
         %td= p.name
         %td= p.description
         -p.tasks_in_order!.each do |t|
-          %td{:class => "task", "data-id" => t.id, "style" => "background-color:#{t.status!.color}"}= t.status!.code
+          %td{:class => "task", "data-code" => t.status.code, "data-id" => t.id, "style" => "background-color:#{t.status!.color}"}= "#{t.status!.comment}"
 
 .new-project
   -form_for @project do |f|
