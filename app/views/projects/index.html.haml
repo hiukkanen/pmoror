@@ -10,15 +10,20 @@
   %tbody
     -@projects.each do |p|
       %tr
-        %td= p.customer
+        %td= p.customer.name
         %td= p.name
         %td= p.description
         %td= p.state
         -p.tasks_in_order!.each do |t|
           %td{:class => "task", "data-code" => t.status!.code, "data-id" => t.id, "style" => "background-color:#{t.status!.color}"}= "#{t.status!.comment}"
+    %tr
+      -form_for @project do |f|
+        -f.fields_for :customer do |customer|
+          %td= customer.text_field :name
+        %td= f.text_field :name
+        %td= f.text_field :description
+        %td= f.text_field :state
+        %td
+          %button{type="submit"} Lisää
 
-.new-project
-  -form_for @project do |f|
-    =f.text_field :name
-    =f.text_field :description
-    %button{type="submit"} Lisää
+
