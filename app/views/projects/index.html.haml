@@ -4,6 +4,7 @@
       %th Asiakas
       %th Projektin nimi
       %th Projektin kuvaus
+      %th Projektin vaihe
       -Project.task_names.each do |t|
         %th= t.to_s
   %tbody
@@ -12,6 +13,7 @@
         %td= p.customer
         %td= p.name
         %td= p.description
+        %td= p.state
         -p.tasks_in_order!.each do |t|
           %td{:class => "task", "data-code" => t.status!.code, "data-id" => t.id, "style" => "background-color:#{t.status!.color}"}= "#{t.status!.comment}"
 
