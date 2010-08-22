@@ -1,6 +1,7 @@
 class Project < ActiveRecord::Base
   has_many :tasks
   validates_presence_of :name
+  belongs_to :customer
 
   def self.task_names
     [:Skema, :Leiska, :Meka, :Softa, :Laskut]
@@ -34,6 +35,13 @@ class Project < ActiveRecord::Base
       return false unless t.ready?
     end
     true
+  end
+
+  def customer!
+    if self.customer == nil
+      self.customer = Customer.create! :name => ""
+    end
+    return self.customer
   end
 
 end
