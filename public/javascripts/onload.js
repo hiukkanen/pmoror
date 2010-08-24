@@ -15,7 +15,7 @@ function clickable_tasks(){
         return;
       }
       $(this).addClass(backgroundClass);
-  }, function(){$(this).html('');});
+  }, function(){;});
 });
 }
 
