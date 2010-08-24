@@ -26,7 +26,7 @@ function jeditable_tasks(){
        indicator: 'Päivitetään ...',
        tooltip: '',
        cssclass: 'editing-task',
-       placeholder: 'Tuplaklikkaa editoitavaksi',
+       placeholder: '',
        width: '',
        height: '',
        event: 'dblclick'
