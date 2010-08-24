@@ -39,12 +39,18 @@ div.card ul > *:nth-child(2n+1)
 div.card ul > *:nth-child(2n+2)
   +horizontal-gradient($color_1, $color_3, $first_stop, $second_stop)
 
-td.task
+#projects td.input
+  max-width: 150px
+
+#projects input
+  width: 100%
+
+#projects td.task
   cursor: pointer
   border-right: 1px solid white
-  min-width: 50px
+  min-width: 100px
 
-td.task:hover
+#projects td:hover
   background-color: lightblue
 
 form.editing-task 

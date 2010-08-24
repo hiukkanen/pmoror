@@ -10,10 +10,10 @@
   %tbody
     -@projects.each do |p|
       %tr
-        %td= p.customer.name
-        %td= p.name
-        %td= p.description
-        %td= p.state
+        %td.input= p.customer.name
+        %td.input= p.name
+        %td.input= p.description
+        %td.input= p.state
         -p.tasks_in_order!.each do |t|
           %td{:class => "task", "data-code" => t.status!.code, "data-id" => t.id, "style" => "background-color:#{t.status!.color}"}= "#{t.status!.comment}"
     %tr
