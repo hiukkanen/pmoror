@@ -12,7 +12,7 @@ class Status < ActiveRecord::Base
   end
 
   def colors
-    ["#CC5D4C", "#FFFEC6", "#96B49C"]
+    ["#FFF", "#CC5D4C", "#96B49C"]
   end
 
   def color
