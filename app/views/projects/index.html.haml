@@ -15,7 +15,7 @@
         %td.input= p.description
         %td.input= p.state
         -p.tasks_in_order!.each do |t|
-          %td{:class => "task", "data-code" => t.status!.code, "data-id" => t.id, "style" => "background-color:#{t.status!.color}"}= "#{t.status!.comment}"
+          %td{:class => "task #{t.status!.css_class}", "data-code" => t.status!.code, "data-id" => t.id}= "#{t.status!.comment}"
     %tr
       -form_for @project do |f|
         -f.fields_for :customer do |customer|

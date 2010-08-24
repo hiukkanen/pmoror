@@ -5,16 +5,16 @@ function sortable_project_table(){
 function clickable_tasks(){
   $("td.task").each(function(){$(this).fixClick(function() {
       var id = $(this).attr("data-id");
-      var background = $.ajax({
+      var backgroundClass = $.ajax({
         type: "GET",
         url: "/tasks/next?id="+id,
         async: false
       }).responseText;
-      if( background == "!ready") {
+      if( backgroundClass == "!ready") {
         location.reload();
         return;
       }
-      $(this).css("background-color", background);
+      $(this).addClass(backgroundClass);
   }, function(){$(this).html('');});
 });
 }

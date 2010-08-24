@@ -4,7 +4,7 @@ class TasksController < ApplicationController
     task.status.next
     task.status.save
     unless task.project.all_ready?
-      render :text => task.status.color
+      render :text => task.status.css_class
     else
       render :text => "!ready"
     end

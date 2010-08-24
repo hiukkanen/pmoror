@@ -11,12 +11,12 @@ class Status < ActiveRecord::Base
     self.code = 0 if self.code > number_of_phases - 1
   end
 
-  def colors
-    ["#FFF", "#CC5D4C", "#96B49C"]
+  def css_classes
+    ["nop", "do", "done"]
   end
 
-  def color
-    colors[code]
+  def css_class
+    css_classes[code]
   end
 
   def ready?
