@@ -1,5 +1,5 @@
 function sortable_project_table(){
-  $("#projects").tablesorter();
+  $("#projects").dataTable();
 }
 
 function clickable_tasks(){
