@@ -1,5 +1,17 @@
 function sortable_project_table(){
-  $("#projects").dataTable();
+  $("#projects").dataTable({
+      "aoColumns": [
+        null,
+        null,
+        null,
+        null,
+        { "sType": "task"},
+        { "sType": "task"},
+        { "sType": "task"},
+        { "sType": "task"},
+        { "sType": "task"}
+      ]
+  });
 }
 
 function clickable_tasks(){

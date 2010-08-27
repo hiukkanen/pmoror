@@ -15,7 +15,16 @@
         %td.input= p.description
         %td.input= p.state
         -p.tasks_in_order!.each do |t|
-          %td{:class => "task #{t.status!.css_class}", "data-code" => t.status!.code, "data-id" => t.id}= "#{t.status!.comment}"
+          %td{:class => "task #{t.status!.css_class}", "data-code" => t.status!.code, "data-id" => t.id} 
+            %span= "#{t.status!.comment}"
+            %span{:style => "display:none", "data-code" => t.status!.code}
+%table#new-project
+  %thead
+    %tr
+      %th Asiakas
+      %th Projektin nimi
+      %th Projektin kuvaus
+      %th Projektin vaihe
     %tr
       -form_for @project do |f|
         -f.fields_for :customer do |customer|
