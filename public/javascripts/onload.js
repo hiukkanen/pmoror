@@ -27,7 +27,9 @@ function clickable_tasks(selector){
           location.reload();
           return;
         }
+        $(this).attr("class", "");
         $(this).addClass(backgroundClass);
+        $(this).addClass("task");
       }, 
       function() {
         
