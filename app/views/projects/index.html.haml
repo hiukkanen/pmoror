@@ -19,6 +19,8 @@
         -p.tasks_in_order!.each do |t|
           %td{:class => "task #{t.status!.css_class}", "data-code" => t.status!.code, "data-id" => t.id} 
             .comment{"data-id" => t.id}= "#{t.status!.comment}"
+            %span
+              %button.edit e
             %span{:style => "display:none", "data-code" => t.status!.code}
 -form_for @project do |f|
   %table#new-project
