@@ -10,7 +10,7 @@
   %tbody
     -@projects.each do |p|
       %tr
-        %td.input= p.customer.name
+        %td.input= p.customer!.name
         %td.input= p.name
         %td.input= p.description
         %td.input= p.state
@@ -18,25 +18,15 @@
           %td{:class => "task #{t.status!.css_class}", "data-code" => t.status!.code, "data-id" => t.id} 
             .comment{"data-id" => t.id}= "#{t.status!.comment}"
             %span{:style => "display:none", "data-code" => t.status!.code}
-%table#new-project
-  %thead
-    %tr
-      %th Asiakas
-      %th Projektin nimi
-      %th Projektin kuvaus
-      %th Projektin vaihe
-    %tr
-      -form_for @project do |f|
-        -f.fields_for :customer do |customer|
-          %td= customer.text_field :name
+-form_for @project do |f|
+  %table#new-project
+    %thead
+      %tr
+        %th Nimi
+        %th OK
+      %tr
         %td= f.text_field :name
-        %td= f.text_field :description
-        %td= f.text_field :state
         %td
           %button{type="submit"} Lisää
-        %td
-        %td
-        %td
-        %td
 
 
