@@ -1,5 +1,5 @@
 source :gemcutter
-gem "rails", "~> 2.3.8"
+gem "rails", "2.3.8"
 gem "sqlite3-ruby", "1.2.5", :require => "sqlite3"
 gem "pg", "0.9.0"
 gem "thin", "1.2.7"
