@@ -38,6 +38,21 @@ function clickable_tasks(selector){
  );
 }
 
+function jeditable_fields(selector){
+  $(selector).each(function(){
+      var id = $(this).attr("data-id");
+      var url = $(this).attr("data-url");
+       $(this).editable(url + '?id=' + id,  { 
+       indicator: 'Päivitetään ...',
+       tooltip: '',
+       cssclass: 'editing-task',
+       placeholder: '',
+       width: '',
+       height: '',
+       event: 'dblclick'
+     });
+  }); 
+}
 function jeditable_tasks(selector){
   $(selector).each(function(){
       var id = $(this).attr("data-id");
@@ -59,4 +74,5 @@ $(document).ready(function() {
     clickable_tasks(selector);
     selector = "div.comment";
     jeditable_tasks(selector);
+    jeditable_fields('td.input');
 });

@@ -16,4 +16,24 @@ class ProjectsController < ApplicationController
     redirect_to projects_path   
   end
 
+  def name
+    update_attribute "name", params
+  end
+
+  def description
+    update_attribute "description", params
+  end
+
+  def state
+    update_attribute "state", params
+  end
+
+  def update_attribute(attribute, params)
+    project = Project.find params[:id]
+    value = params[:value]
+    project.send attribute+"=", value
+    project.save!
+    render :text => (project.send attribute)
+  end
+
 end
