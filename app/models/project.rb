@@ -2,6 +2,12 @@ class Project < ActiveRecord::Base
   has_many :tasks
   validates_presence_of :name
   belongs_to :customer
+  before_save :set_default_dates
+
+  def set_default_dates
+    self.start_date = DateTime.now unless self.start_date
+    self.end_date = DateTime.now unless self.end_date
+  end
 
   def self.task_names
     [:Skema, :Leiska, :Meka, :Softa, :Laskut]
@@ -42,6 +48,10 @@ class Project < ActiveRecord::Base
     self.customer = Customer.new 
     self.save!
     return self.customer
+  end
+
+  def start_end_date
+    return "#{self.start_date}-#{self.end_date}"
   end
 
 end
