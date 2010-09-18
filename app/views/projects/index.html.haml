@@ -12,7 +12,7 @@
     -@projects.each do |p|
       %tr
         %td.input{"data-id" => p.customer!.id, "data-url" => "/customers/name"}= p.customer!.name
-        %td.input= p.start_end_date
+        %td.input{"data-id" => p.id, "data-url" => "/projects/start_end_date"}= p.start_end_date
         %td.input{"data-id" => p.id, "data-url" => "/projects/name"}= p.name
         %td.input{"data-id" => p.id, "data-url" => "/projects/description"}= p.description
         %td.input{"data-id" => p.id, "data-url" => "/projects/state"}= p.state

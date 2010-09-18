@@ -36,4 +36,17 @@ class ProjectsController < ApplicationController
     render :text => (project.send attribute)
   end
 
+  def start_end_date
+    value = params[:value]
+    value =~ / *([^ ]*) *-.*/
+    start_date = $1
+    value =~ /.*- *([^ ]*) */
+    end_date = $1
+    project = Project.find params[:id]
+    project.start_date = start_date
+    project.end_date = end_date
+    project.save!
+    render :text => project.start_end_date
+  end
+
 end
