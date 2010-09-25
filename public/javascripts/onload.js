@@ -15,7 +15,7 @@ function sortable_project_table(){
 }
 
 function clickable_tasks(selector){
-  $(selector). each(function(){$(this).fixClick(
+  $(selector).click(
       function() {
         var id = $(this).attr("data-id");
         var backgroundClass = $.ajax({
@@ -27,15 +27,12 @@ function clickable_tasks(selector){
           location.reload();
           return;
         }
-        $(this).attr("class", "");
-        $(this).addClass(backgroundClass);
-        $(this).addClass("task");
-      }, 
-      function() {
-        
-      }
-    );}
- );
+        p = $(this).parents("td.task");
+        p.attr("class", "");
+        p.addClass(backgroundClass);
+        p.addClass("task");
+      }  
+  );
 }
 
 function jeditable_fields(selector){
@@ -70,9 +67,7 @@ function jeditable_tasks(selector){
 
 $(document).ready(function() {
     sortable_project_table();
-    var selector = "td.task";
-    clickable_tasks(selector);
-    selector = "div.comment";
-    jeditable_tasks(selector);
+    clickable_tasks(".colorChanger");
+    jeditable_tasks(".comment");
     jeditable_fields('td.input');
 });
