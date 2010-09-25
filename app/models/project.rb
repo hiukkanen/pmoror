@@ -45,7 +45,8 @@ class Project < ActiveRecord::Base
 
   def customer!
     return self.customer if customer
-    self.customer = Customer.new 
+    self.customer = Customer.new unless self.customer
+    self.customer.save!
     self.save!
     return self.customer
   end

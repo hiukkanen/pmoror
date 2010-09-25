@@ -5,7 +5,7 @@ class Customer < ActiveRecord::Base
 
   def replace_with_existing
     customer = Customer.find_by_name self.name
-    if customer
+    if customer and self.name
       return false
     end
   end
