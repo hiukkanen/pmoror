@@ -2,7 +2,8 @@
   %table#projects
     %thead
       %tr
-        %th Aika
+        %th Alkuaika
+        %th Loppuaika
         %th Asiakas
         %th Projektin nimi
         %th Projektin kuvaus
@@ -12,7 +13,8 @@
     %tbody
       -@projects.each do |p|
         %tr
-          %td.input{"data-id" => p.id, "data-url" => "/projects/start_end_date"}= p.start_end_date
+          %td.input{"data-id" => p.id, "data-url" => "/projects/start_date"}= p.start_date
+          %td.input{"data-id" => p.id, "data-url" => "/projects/end_date"}= p.end_date
           %td.input{"data-id" => p.customer!.id, "data-url" => "/customers/name"}= p.customer!.name
           %td.input{"data-id" => p.id, "data-url" => "/projects/name"}= p.name
           %td.input{"data-id" => p.id, "data-url" => "/projects/description"}= p.description
