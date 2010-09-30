@@ -1,7 +1,9 @@
 function sortable_project_table(){
   $("#projects").dataTable({
       "bPaginate": false,
+      "bInfo": false,
       "aoColumns": [
+        null,
         null,
         null,
         null,
