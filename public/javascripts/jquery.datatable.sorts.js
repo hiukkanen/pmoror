@@ -1,5 +1,5 @@
 function getSortAttribute(element) {
-  return $('<div>'+element+'</div>').find("span:last").attr("data-code");
+  return $('<div>'+element+'</div>').find("span.comment").attr("data-code");
 }
 function sort(direction, a, b) {
   x = getSortAttribute(a);
