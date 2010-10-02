@@ -8,6 +8,7 @@ function sortable_project_table(){
         null,
         null,
         null,
+        null,
         { "sType": "task"},
         { "sType": "task"},
         { "sType": "task"},
