@@ -5,6 +5,7 @@ class ProjectsController < ApplicationController
     @projects.delete_if { |p| p.all_ready? }
     @project = Project.new
     @project.build_customer
+    @selected_id = params[:selected]
   end
 
   def create
