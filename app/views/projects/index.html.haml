@@ -16,8 +16,11 @@
           %td.input{"data-id" => p.id, "data-url" => "/projects/start_date"}= p.start_date
           %td.input{"data-id" => p.id, "data-url" => "/projects/end_date"}= p.end_date
           %td.input{"data-id" => p.customer!.id, "data-url" => "/customers/name"}= p.customer!.name
-          %td.input{"data-id" => p.id, "data-url" => "/projects/name"}
-            %a{"href" => "?selected=#{p.id.to_s}"}= p.name
+          -if p.id.to_s != @selected_id
+            %td.input{"data-id" => p.id, "data-url" => "/projects/name"}
+              %a{"href" => "?selected=#{p.id.to_s}"}= p.name
+          -else
+            %td.input{"data-id" => p.id, "data-url" => "/projects/name"}= p.name
           %td.input{"data-id" => p.id, "data-url" => "/projects/description"}= p.description
           %td.input{"data-id" => p.id, "data-url" => "/projects/state"}= p.state
           -p.tasks_in_order!.each do |t|
