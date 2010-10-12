@@ -39,7 +39,7 @@ div.card ul > *:nth-child(2n+1)
 div.card ul > *:nth-child(2n+2)
   +horizontal-gradient($color_1, $color_3, $first_stop, $second_stop)
 
-#projects td.input
+#projects td.input, #projects td.task
   max-width: 150px
 
 #projects input
@@ -70,6 +70,9 @@ span.comment
 span.colorChanger
   position: relative
   bottom: 0px
+
+span.comment, span.colorChanger
+  white-space: normal
   
 form.editing-task 
   position: relative
