@@ -1,5 +1,5 @@
 class Task < ActiveRecord::Base
-  validates_presence_of :name, :project
+  validates_presence_of :name
   belongs_to :project
   has_one :status
 
