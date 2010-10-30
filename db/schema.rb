@@ -9,12 +9,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100918152023) do
+ActiveRecord::Schema.define(:version => 20101030152645) do
 
   create_table "customers", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
+  end
+
+  create_table "project_groups", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "projects", :force => true do |t|
@@ -26,6 +31,7 @@ ActiveRecord::Schema.define(:version => 20100918152023) do
     t.integer  "customer_id"
     t.date     "start_date"
     t.date     "end_date"
+    t.integer  "project_group_id"
   end
 
   create_table "statuses", :force => true do |t|
@@ -41,6 +47,7 @@ ActiveRecord::Schema.define(:version => 20100918152023) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "project_id"
+    t.integer  "project_group_id"
   end
 
 end
