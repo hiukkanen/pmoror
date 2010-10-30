@@ -2,6 +2,7 @@ class Project < ActiveRecord::Base
   has_many :tasks
   validates_presence_of :name
   belongs_to :customer
+  belongs_to :project_group
   before_save :set_default_dates
 
   def set_default_dates
@@ -10,6 +11,10 @@ class Project < ActiveRecord::Base
   end
 
   def self.task_names
+    names = []
+    project_group.tasks.each do |taks|
+      names.push task.name
+    end
     [:Skema, :Leiska, :Meka, :Softa, :Laskut]
   end
 
