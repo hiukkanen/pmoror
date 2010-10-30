@@ -15,7 +15,7 @@ class Project < ActiveRecord::Base
     project_group.tasks.each do |taks|
       names.push task.name
     end
-    [:Skema, :Leiska, :Meka, :Softa, :Laskut]
+    return names
   end
 
   def tasks_in_order!
