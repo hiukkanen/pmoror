@@ -1,14 +1,14 @@
-<html>
-<head>
-= #stylesheet_link_tag "liquid" 
-= #stylesheet_link_tag "blueprint/src/reset", "blueprint/src/typography"
-= stylesheet_link_tag "application"
-= #stylesheet_link_tag "tablesorter/blue/style"
-= stylesheet_link_tag "datatables/css/demo_table"
-= javascript_include_tag :all, :recursive => true
-</head>
-<body>
-.container
-  = yield
-</body>
-</html>
+%html
+  %head
+    = stylesheet_link_tag "application"
+    = stylesheet_link_tag "datatables/css/demo_table"
+    = javascript_include_tag :all, :recursive => true
+  %body
+    #navcontainer
+      %ul#nav-bar
+        %li
+          = link_to "Projektit", projects_path
+        %li
+          = link_to "Uusi projektiryhma", new_project_group_path({:tasks => 5})
+    #container
+      = yield
