@@ -2,7 +2,7 @@ class ProjectGroupsController < ApplicationController
 
   def new
     @project_group = ProjectGroup.new
-    id = params['id']
+    id = params['id'] || params['tasks']
     id.to_i.times { @project_group.tasks.build }
   end
 
