@@ -34,7 +34,8 @@ class Project < ActiveRecord::Base
     return tasks if tasks.size > 0
     tasks = []
     task_names.each do |t|
-      tasks << Task.new(:name => t.to_s)
+      project_group_task = project_group.tasks.find_by_name t
+      tasks << Task.new(:name => t.to_s, :task => project_group_task)
     end
     self.tasks = tasks
     self.save!
