@@ -25,4 +25,21 @@ class ProjectGroupsController < ApplicationController
     redirect_to project_groups_path
   end
 
+  def destroy
+    project_group = ProjectGroup.find params[:id]
+    project_group.projects.each do |project|
+      project.tasks.each do |task|
+        task.status.destroy if task.status
+        task.destroy
+      end
+      project.customer.destroy if project.customer
+      project.destroy
+    end
+    project_group.tasks.each do |task|
+      task.destroy
+    end
+    project_group.destroy
+    redirect_to project_groups_path
+  end
+
 end
