@@ -1,11 +1,2 @@
 -form_for @project_group do |f|
-  = f.label :name
-  = f.text_field :name
-
-  .task
-    %h2 Työvaiheiden nimet
-    - f.fields_for :tasks do |t|
-      = t.error_messages
-      = t.text_field :name
-
-  = submit_tag
+  = render :partial => 'form', :locals => { :f => f }
