@@ -1,21 +1,25 @@
 function sortable_project_table(){
-  $("#projects").dataTable({
-      "bPaginate": false,
-      "bInfo": false,
-      "aoColumns": [
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        { "sType": "task"},
-        { "sType": "task"},
-        { "sType": "task"},
-        { "sType": "task"},
-        { "sType": "task"}
-      ]
-  });
+  $("#projects").each(function(index, element) {
+      sort_type = { "sType": "task"};
+      columns = [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+      ];
+      tasks = $(element).attr('data-tasks');
+      tasks = parseInt(tasks);
+      for(var i = 0; i < tasks; i += 1) {
+        columns.push(sort_type);
+      }
+      $(element).dataTable({
+        "bPaginate": false,
+        "bInfo": false,
+        "aoColumns": columns
+        })
+      });
 }
 
 function clickable_tasks(selector){
