@@ -1,19 +1,13 @@
 class ProjectsController < ApplicationController
 
   def index
-    @projects = Project.all
-    @projects.delete_if { |p| p.all_ready? }
-    @project = Project.new
-    @project.build_customer
+    @project_groups = ProjectGroup.all
     @selected_id = params[:selected]
   end
 
   def create
-    require 'pp'
-    @project = Project.new params[:project]
-    if @project.save
-      @project = Project.new
-    end
+    project = Project.new params[:project]
+    project.save
     redirect_to projects_path   
   end
 
