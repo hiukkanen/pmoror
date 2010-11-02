@@ -4,3 +4,4 @@
       = link_to pg.name, projects_path(:'group-id' => pg.id)
       %span{ :style => "font-size:small;"}
       = link_to "muokkaa", edit_project_group_path(pg)
+      = link_to "poista", project_group_path(pg), :confirm => 'Oletko varma', :method => :delete
