@@ -16,7 +16,7 @@ class ProjectGroupsController < ApplicationController
 
   def create
     @project_group = ProjectGroup.new params[:project_group]
-    @project_group.save ? redirect_to(project_group_path(@project_group)) : render(:action => :new)
+    @project_group.save ? redirect_to(project_groups_path) : render(:action => :new)
   end
 
   def update
