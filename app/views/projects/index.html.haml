@@ -1,41 +1,46 @@
-%div
-  %table#projects
-    %thead
-      %tr
-        %th Alkuaika
-        %th Loppuaika
-        %th Asiakas
-        %th Projektin nimi
-        %th Projektin kuvaus
-        %th Projektin vaihe
-        -Project.task_names.each do |t|
-          %th= t.to_s
-    %tbody
-      -@projects.each do |p|
-        %tr{:class => p.id.to_s != @selected_id && "oneline"}
-          %td.input{"data-id" => p.id, "data-url" => "/projects/start_date"}= p.start_date
-          %td.input{"data-id" => p.id, "data-url" => "/projects/end_date"}= p.end_date
-          %td.input{"data-id" => p.customer!.id, "data-url" => "/customers/name"}= p.customer!.name
-          -if p.id.to_s != @selected_id
-            %td.input{"data-id" => p.id, "data-url" => "/projects/name"}
-              %a{"href" => "?selected=#{p.id.to_s}"}= p.name
-          -else
-            %td.input{"data-id" => p.id, "data-url" => "/projects/name"}= p.name
-          %td.input{"data-id" => p.id, "data-url" => "/projects/description"}= p.description
-          %td.input{"data-id" => p.id, "data-url" => "/projects/state"}= p.state
-          -p.tasks_in_order!.each do |t|
-            %td{:class => "task #{t.status!.css_class}", "data-code" => t.status!.code, "data-id" => t.id} 
-              %span.comment{"data-id" => t.id, "data-code" => t.status!.code}= "#{t.status!.comment}"
-              -if @selected_id == p.id.to_s
-                %span.colorChanger{"data-id" => t.id} &gt;
-%div
-  -form_for @project do |f|
-    %table#new-project
-      %thead
-        %tr
-          %th Nimi
-          %th OK
-        %tr
-          %td= f.text_field :name
-          %td
-            %button{type="submit"} Lisää
+-@project_groups.each do |project_group|
+  %h2= project_group.name
+  -if project_group.projects.size > 0
+    %div
+      %table#projects
+        %thead
+          %tr
+            %th Alkuaika
+            %th Loppuaika
+            %th Asiakas
+            %th Projektin nimi
+            %th Projektin kuvaus
+            %th Projektin vaihe
+            -project_group.projects.first.task_names.each do |t|
+              %th= t.to_s
+        %tbody
+          -project_group.projects.each do |p|
+            %tr{:class => p.id.to_s != @selected_id && "oneline"}
+              %td.input{"data-id" => p.id, "data-url" => "/projects/start_date"}= p.start_date
+              %td.input{"data-id" => p.id, "data-url" => "/projects/end_date"}= p.end_date
+              %td.input{"data-id" => p.customer!.id, "data-url" => "/customers/name"}= p.customer!.name
+              -if p.id.to_s != @selected_id
+                %td.input{"data-id" => p.id, "data-url" => "/projects/name"}
+                  %a{"href" => "?selected=#{p.id.to_s}"}= p.name
+              -else
+                %td.input{"data-id" => p.id, "data-url" => "/projects/name"}= p.name
+              %td.input{"data-id" => p.id, "data-url" => "/projects/description"}= p.description
+              %td.input{"data-id" => p.id, "data-url" => "/projects/state"}= p.state
+              -p.tasks_in_order!.each do |t|
+                %td{:class => "task #{t.status!.css_class}", "data-code" => t.status!.code, "data-id" => t.id} 
+                  %span.comment{"data-id" => t.id, "data-code" => t.status!.code}= "#{t.status!.comment}"
+                  -if @selected_id == p.id.to_s
+                    %span.colorChanger{"data-id" => t.id} &gt;
+  %div
+    %h4 Uusi projekti
+    -form_for project_group.new_project do |f|
+      = f.hidden_field :project_group_id
+      %table#new-project
+        %thead
+          %tr
+            %th Uuden projektin nimi
+            %th OK
+          %tr
+            %td= f.text_field :name
+            %td
+              %button{type="submit"} Lisää
