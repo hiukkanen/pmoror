@@ -30,7 +30,7 @@
             %td.input{"data-id" => p.customer!.id, "data-url" => "/customers/name"}= p.customer!.name
             -if p.id.to_s != @selected_id
               %td.input{"data-id" => p.id, "data-url" => "/projects/name"}
-                %a{"href" => "?selected=#{p.id.to_s}"}= p.name
+                = link_to p.name, request.parameters.merge({ :selected => p.id })
             -else
               %td.input{"data-id" => p.id, "data-url" => "/projects/name"}= p.name
             %td.input{"data-id" => p.id, "data-url" => "/projects/description"}= p.description
