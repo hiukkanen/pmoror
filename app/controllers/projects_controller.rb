@@ -9,7 +9,8 @@ class ProjectsController < ApplicationController
   def create
     project = Project.new params[:project]
     project.save
-    redirect_to projects_path   
+    group_id = params[:project][:'project_group_id']
+    redirect_to projects_path('group-id' => group_id) 
   end
 
   def name
