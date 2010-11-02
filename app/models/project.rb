@@ -1,6 +1,6 @@
 class Project < ActiveRecord::Base
   has_many :tasks
-  validates_presence_of :name
+  validates_presence_of :name, :project_group
   belongs_to :customer
   belongs_to :project_group
   before_save :set_default_dates
@@ -10,9 +10,9 @@ class Project < ActiveRecord::Base
     self.end_date = DateTime.now unless self.end_date
   end
 
-  def self.task_names
+  def task_names
     names = []
-    project_group.tasks.each do |taks|
+    project_group.tasks.each do |task|
       names.push task.name
     end
     return names
@@ -24,7 +24,7 @@ class Project < ActiveRecord::Base
       map.merge! t.name => t
     end
     list = []
-    Project.task_names.each do |t|
+    task_names.each do |t|
       list << map[t.to_s] if map[t.to_s] != nil
     end
     list
@@ -33,7 +33,7 @@ class Project < ActiveRecord::Base
   def tasks!
     return tasks if tasks.size > 0
     tasks = []
-    Project.task_names.each do |t|
+    task_names.each do |t|
       tasks << Task.new(:name => t.to_s)
     end
     self.tasks = tasks
