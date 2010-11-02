@@ -1,6 +1,6 @@
 class ProjectGroup < ActiveRecord::Base
   has_many :projects
-  has_many :tasks
+  has_many :tasks, :order => 'id'
   accepts_nested_attributes_for :tasks
 
   def new_project
