@@ -1,10 +1,8 @@
 class ProjectsController < ApplicationController
 
   def index
-    @project_groups = ProjectGroup.all
-    @project_groups.each do |pg|
-      pg.projects.delete_if { |project| project.all_ready? }
-    end
+    @project_group = ProjectGroup.find params['group-id']
+    @project_group.projects.delete_if { |project| project.all_ready? }
     @selected_id = params[:selected]
   end
 
