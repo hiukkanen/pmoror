@@ -2,10 +2,6 @@ function sortable_project_table(){
   $("#projects").each(function(index, element) {
       sort_type = { "sType": "task"};
       columns = [
-      null,
-      null,
-      null,
-      null,
       null
       ];
       tasks = $(element).attr('data-tasks');
