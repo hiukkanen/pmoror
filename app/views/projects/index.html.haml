@@ -2,7 +2,7 @@
   %h2= project_group.name
   -if project_group.projects.size > 0
     %div
-      %table#projects
+      %table#projects{ 'data-tasks' => project_group.projects.size }
         %thead
           %tr
             %th Alkuaika
