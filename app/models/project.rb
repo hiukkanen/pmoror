@@ -21,7 +21,7 @@ class Project < ActiveRecord::Base
   def tasks_in_order!
     map = {}
     self.tasks!.each do |t|
-      map.merge! t.name => t
+      map.merge! t.task.name => t
     end
     list = []
     task_names.each do |t|
