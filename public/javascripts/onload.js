@@ -6,7 +6,6 @@ function sortable_project_table(){
       null,
       null,
       null,
-      null,
       null
       ];
       tasks = $(element).attr('data-tasks');

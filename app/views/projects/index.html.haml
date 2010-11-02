@@ -9,7 +9,6 @@
           %th Asiakas
           %th Projektin nimi
           %th Projektin kuvaus
-          %th Projektin vaihe
           -@project_group.projects.first.task_names.each do |t|
             %th= h t.to_s
       %tfoot
@@ -19,7 +18,6 @@
           %th Asiakas
           %th Projektin nimi
           %th Projektin kuvaus
-          %th Projektin vaihe
           -@project_group.projects.first.task_names.each do |t|
             %th= h t.to_s
       %tbody
@@ -34,7 +32,6 @@
             -else
               %td.input{"data-id" => p.id, "data-url" => "/projects/name"}= h(p.name)
             %td.input{"data-id" => p.id, "data-url" => "/projects/description"}= p.description
-            %td.input{"data-id" => p.id, "data-url" => "/projects/state"}= p.state
             -p.tasks_in_order!.each do |t|
               %td{:class => "task #{t.status!.css_class}", "data-code" => t.status!.code, "data-id" => t.id} 
                 %span.comment{"data-id" => t.id, "data-code" => t.status!.code}= h "#{t.status!.comment}"
