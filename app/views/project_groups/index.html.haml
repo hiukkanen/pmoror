@@ -1,7 +1,8 @@
-%ul
+%ul#project-groups
   -@project_groups.each do |pg|
-    %li
-      = link_to pg.name, projects_path(:'group-id' => pg.id)
-      %span{ :style => "font-size:small;"}
-      = link_to "muokkaa", edit_project_group_path(pg)
-      = link_to "poista", project_group_path(pg), :confirm => 'Oletko varma', :method => :delete
+    %li.project-group
+      %span.project-group
+        = link_to pg.name, projects_path(:'group-id' => pg.id)
+      %span.modify
+        = link_to "Muokkaa", edit_project_group_path(pg)
+        = link_to "Poista", project_group_path(pg), :confirm => 'Oletko varma', :method => :delete
