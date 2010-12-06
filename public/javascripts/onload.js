@@ -8,7 +8,6 @@ function sortable_project_table(){
       for(var i = 0; i < tasks; i += 1) {
         columns.push({ "sType": "task"});
       }
-      console.log(columns);
       $(element).dataTable({
         "bPaginate": false,
         "bInfo": false,
