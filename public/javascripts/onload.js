@@ -1,13 +1,12 @@
 function sortable_project_table(){
   $("#projects").each(function(index, element) {
-      sort_type = { "sType": "task"};
       columns = [
-      null
+        null
       ];
       tasks = $(element).attr('data-tasks');
       tasks = parseInt(tasks);
       for(var i = 0; i < tasks; i += 1) {
-        columns.push(sort_type);
+        columns.push({ "sType": "task"});
       }
       $(element).dataTable({
         "bPaginate": false,
