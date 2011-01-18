@@ -1,3 +1,7 @@
+-if request.parameters[:all] == "1"
+  = link_to "Piilota valmiit", request.parameters.merge({:all => 0})
+-else
+  = link_to "Näytä valmiit", request.parameters.merge({:all => 1})
 %h2= h @project_group.name
 -if @project_group.projects.size > 0
   %div
