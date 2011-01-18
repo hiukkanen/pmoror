@@ -53,11 +53,9 @@ function sort(direction, a, b) {
   return ((x < y) ? direction : ((x > y) ?  1 : direction * naturalSort($a.text(),$b.text())));
 }
 jQuery.fn.dataTableExt.oSort['task-asc']  = function(a,b) {
-  console.log('sortting task-asc');
   return sort(-1, a, b);
 };
 
 jQuery.fn.dataTableExt.oSort['task-desc'] = function(a,b) {
-  console.log('sortting task-desc');
   return sort(1, a, b);
 };
