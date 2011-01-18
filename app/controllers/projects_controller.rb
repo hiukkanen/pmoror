@@ -2,7 +2,7 @@ class ProjectsController < ApplicationController
 
   def index
     @project_group = ProjectGroup.find params['group-id']
-    @project_group.projects.delete_if { |project| project.all_ready? }
+    @project_group.projects.delete_if { |project| project.all_ready? } unless params[:all] == "1"
     @selected_id = params[:selected]
   end
 
