@@ -37,34 +37,33 @@ function clickable_tasks(selector){
   );
 }
 
+function addJeditable(element, url, custom_event) {
+  element.editable(url,  { 
+      indicator: 'Päivitetään ...',
+      tooltip: '',
+      cssclass: 'editing-task',
+      placeholder: '',
+      width: '',
+      height: '',
+      event: custom_event,
+      onblur: 'submit',
+      callback: function() { location.reload(); }
+  });
+};
+
 function jeditable_fields(selector){
   $(selector).each(function(){
       var id = $(this).attr("data-id");
       var url = $(this).attr("data-url");
-       $(this).editable(url + '?id=' + id,  { 
-       indicator: 'Päivitetään ...',
-       tooltip: '',
-       cssclass: 'editing-task',
-       placeholder: '',
-       width: '',
-       height: '',
-       event: 'dblclick'
-     });
+      url += '?id=' + id;
+      addJeditable($(this), url, 'dblclick');
   }); 
 }
 function jeditable_tasks(selector){
   $(selector).each(function(){
       var id = $(this).attr("data-id");
-       $(this).editable('/tasks/comment?id='+id,  { 
-       indicator: 'Päivitetään ...',
-       tooltip: '',
-       cssclass: 'editing-task',
-       placeholder: '',
-       width: '',
-       height: '',
-       event: 'dblclick',
-       callback: function() { location.reload(); }
-     });
+      var url = '/tasks/comment?id='+id;
+      addJeditable($(this), url, 'click');
   }); 
 }
 
