@@ -1,9 +1,6 @@
-source :gemcutter
-gem 'rails', '2.3.8'
-gem 'sqlite3-ruby', '1.2.5', require: 'sqlite3'
-gem 'pg', '0.9.0'
-gem 'thin', '1.2.7'
-gem 'haml', '3.0.13'
+source :rubygems
+gem 'rails', '~> 5'
+gem 'sqlite3'
 
 # bundler requires these gems in all environments
 # gem "nokogiri", "1.4.2"
