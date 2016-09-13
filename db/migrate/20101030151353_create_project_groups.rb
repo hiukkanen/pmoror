@@ -1,8 +1,6 @@
 class CreateProjectGroups < ActiveRecord::Migration
   def self.up
-    create_table :project_groups do |t|
-      t.timestamps
-    end
+    create_table :project_groups, &:timestamps
   end
 
   def self.down

@@ -5,26 +5,25 @@ class Task < ActiveRecord::Base
   has_many :tasks
   belongs_to :task
   belongs_to :project_group
-  default_scope :order => 'id'
+  default_scope order: 'id'
 
   before_save :validate
-  
+
   def validate
-    if project != nil
-      raise "parent task is missing" if task == nil
+    unless project.nil?
+      raise 'parent task is missing' if task.nil?
     end
-    if project_group != nil
-      raise "should not have parent" if task != nil
+    unless project_group.nil?
+      raise 'should not have parent' unless task.nil?
     end
   end
 
   def status!
-    self.status = Status.create! :task => self unless self.status != nil
-    self.status
+    self.status = Status.create! task: self if status.nil?
+    status
   end
 
   def ready?
-    self.status!.ready?
+    status!.ready?
   end
-
 end

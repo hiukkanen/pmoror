@@ -1,4 +1,4 @@
-# This file is auto-generated from the current state of the database. Instead of editing this file, 
+# This file is auto-generated from the current state of the database. Instead of editing this file,
 # please use the migrations feature of Active Record to incrementally modify your database, and
 # then regenerate this schema definition.
 #
@@ -9,47 +9,45 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101102142833) do
-
-  create_table "customers", :force => true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "name"
+ActiveRecord::Schema.define(version: 20_101_102_142_833) do
+  create_table 'customers', force: true do |t|
+    t.datetime 'created_at'
+    t.datetime 'updated_at'
+    t.string   'name'
   end
 
-  create_table "project_groups", :force => true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "name"
+  create_table 'project_groups', force: true do |t|
+    t.datetime 'created_at'
+    t.datetime 'updated_at'
+    t.string   'name'
   end
 
-  create_table "projects", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.text     "description"
-    t.integer  "state"
-    t.integer  "customer_id"
-    t.date     "start_date"
-    t.date     "end_date"
-    t.integer  "project_group_id"
+  create_table 'projects', force: true do |t|
+    t.string   'name'
+    t.datetime 'created_at'
+    t.datetime 'updated_at'
+    t.text     'description'
+    t.integer  'state'
+    t.integer  'customer_id'
+    t.date     'start_date'
+    t.date     'end_date'
+    t.integer  'project_group_id'
   end
 
-  create_table "statuses", :force => true do |t|
-    t.integer  "code",       :default => 0
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "task_id"
-    t.text     "comment"
+  create_table 'statuses', force: true do |t|
+    t.integer  'code', default: 0
+    t.datetime 'created_at'
+    t.datetime 'updated_at'
+    t.integer  'task_id'
+    t.text     'comment'
   end
 
-  create_table "tasks", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "project_id"
-    t.integer  "project_group_id"
-    t.integer  "task_id"
+  create_table 'tasks', force: true do |t|
+    t.string   'name'
+    t.datetime 'created_at'
+    t.datetime 'updated_at'
+    t.integer  'project_id'
+    t.integer  'project_group_id'
+    t.integer  'task_id'
   end
-
 end

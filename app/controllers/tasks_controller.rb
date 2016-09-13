@@ -3,10 +3,10 @@ class TasksController < ApplicationController
     task = Task.find params[:id]
     task.status.next
     task.status.save
-    unless task.project.all_ready?
-      render :text => task.status.css_class
+    if task.project.all_ready?
+      render text: '!ready'
     else
-      render :text => "!ready"
+      render text: task.status.css_class
     end
   end
 
@@ -15,6 +15,6 @@ class TasksController < ApplicationController
     comment = params[:value]
     task.status.comment = comment
     task.status.save!
-    render :text => params[:value]
+    render text: params[:value]
   end
 end

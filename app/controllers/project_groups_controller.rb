@@ -1,5 +1,4 @@
 class ProjectGroupsController < ApplicationController
-
   def new
     @project_group = ProjectGroup.new
     id = params['id'] || params['tasks']
@@ -16,7 +15,7 @@ class ProjectGroupsController < ApplicationController
 
   def create
     @project_group = ProjectGroup.new params[:project_group]
-    @project_group.save ? redirect_to(project_groups_path) : render(:action => :new)
+    @project_group.save ? redirect_to(project_groups_path) : render(action: :new)
   end
 
   def update
@@ -35,11 +34,8 @@ class ProjectGroupsController < ApplicationController
       project.customer.destroy if project.customer
       project.destroy
     end
-    project_group.tasks.each do |task|
-      task.destroy
-    end
+    project_group.tasks.each(&:destroy)
     project_group.destroy
     redirect_to project_groups_path
   end
-
 end

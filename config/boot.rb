@@ -1,7 +1,7 @@
 # Don't change this file!
 # Configure your app in config/environment.rb and config/environments/*.rb
 
-RAILS_ROOT = "#{File.dirname(__FILE__)}/.." unless defined?(RAILS_ROOT)
+RAILS_ROOT = "#{File.dirname(__FILE__)}/..".freeze unless defined?(RAILS_ROOT)
 
 module Rails
   class << self
@@ -68,7 +68,9 @@ module Rails
 
     class << self
       def rubygems_version
-        Gem::RubyGemsVersion rescue nil
+        Gem::RubyGemsVersion
+      rescue
+        nil
       end
 
       def gem_version
@@ -85,23 +87,24 @@ module Rails
         min_version = '1.3.2'
         require 'rubygems'
         unless rubygems_version >= min_version
-          $stderr.puts %Q(Rails requires RubyGems >= #{min_version} (you have #{rubygems_version}). Please `gem update --system` and try again.)
+          $stderr.puts %(Rails requires RubyGems >= #{min_version} (you have #{rubygems_version}). Please `gem update --system` and try again.)
           exit 1
         end
 
       rescue LoadError
-        $stderr.puts %Q(Rails requires RubyGems >= #{min_version}. Please install RubyGems and try again: http://rubygems.rubyforge.org)
+        $stderr.puts %(Rails requires RubyGems >= #{min_version}. Please install RubyGems and try again: http://rubygems.rubyforge.org)
         exit 1
       end
 
       def parse_gem_version(text)
-        $1 if text =~ /^[^#]*RAILS_GEM_VERSION\s*=\s*["']([!~<>=]*\s*[\d.]+)["']/
+        Regexp.last_match(1) if text =~ /^[^#]*RAILS_GEM_VERSION\s*=\s*["']([!~<>=]*\s*[\d.]+)["']/
       end
 
       private
-        def read_environment_rb
-          File.read("#{RAILS_ROOT}/config/environment.rb")
-        end
+
+      def read_environment_rb
+        File.read("#{RAILS_ROOT}/config/environment.rb")
+      end
     end
   end
 end

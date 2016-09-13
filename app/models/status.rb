@@ -7,12 +7,12 @@ class Status < ActiveRecord::Base
   end
 
   def next
-    self.code = self.code + 1 
-    self.code = 0 if self.code > number_of_phases - 1
+    self.code = code + 1
+    self.code = 0 if code > number_of_phases - 1
   end
 
   def css_classes
-    ["nop", "do", "done"]
+    %w(nop do done)
   end
 
   def css_class
@@ -22,5 +22,4 @@ class Status < ActiveRecord::Base
   def ready?
     code + 1 == number_of_phases
   end
-
 end
