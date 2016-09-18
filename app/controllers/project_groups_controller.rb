@@ -14,7 +14,9 @@ class ProjectGroupsController < ApplicationController
   end
 
   def create
-    @project_group = ProjectGroup.new params[:project_group]
+    @project_group = ProjectGroup.new project_group_params
+    pp @project_group.valid?
+    pp @project_group.errors.full_messages
     @project_group.save ? redirect_to(project_groups_path) : render(action: :new)
   end
 
@@ -37,5 +39,11 @@ class ProjectGroupsController < ApplicationController
     project_group.tasks.each(&:destroy)
     project_group.destroy
     redirect_to project_groups_path
+  end
+
+  private
+
+  def project_group_params
+    params.require(:project_group).permit(:name, tasks_attributes: [:id, :name])
   end
 end

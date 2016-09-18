@@ -1,16 +1,20 @@
 class ProjectsController < ApplicationController
   def index
     @project_group = ProjectGroup.find params['group-id']
-    @project_group.projects.delete_if(&:all_ready?) unless params[:all] == '1'
+    ProjectRemover.new.remove_all_ready(@project_group) unless params[:all] == '1' 
     @selected_id = params[:selected]
   end
 
   def create
-    project = Project.new params[:project]
-    project.save
+    project = Project.new project_params
+    project.customer = Customer.new
     group_id = params[:project][:project_group_id]
+    project.project_group = ProjectGroup.find group_id
+    project.save!
     redirect_to projects_path('group-id' => group_id)
   end
+
+  private
 
   def name
     update_attribute 'name', params
@@ -44,5 +48,9 @@ class ProjectsController < ApplicationController
 
   def end_date
     update_time_attribute 'end_date', params
+  end
+
+  def project_params
+    params.require(:project).permit(:name)
   end
 end

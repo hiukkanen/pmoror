@@ -1,5 +1,5 @@
 %ul#project-groups
-  -@project_groups.each do |pg|
+  - @project_groups.each do |pg|
     %li.project-group
       %span.project-group
         = link_to pg.name, projects_path(:'group-id' => pg.id)

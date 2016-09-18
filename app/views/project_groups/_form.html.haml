@@ -3,8 +3,8 @@
 
 .task
   %h2 Työvaiheiden nimet
-  - f.fields_for :tasks do |t|
-    = t.error_messages
+  = f.fields_for :tasks do |t|
+    =# t.error_messages
     = t.text_field :name
 
 = submit_tag

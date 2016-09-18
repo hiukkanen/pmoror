@@ -1,6 +1,6 @@
 class ProjectGroup < ActiveRecord::Base
   has_many :projects
-  has_many :tasks, order: 'id'
+  has_many :tasks, -> { order(:id) }, inverse_of: :project_group
   accepts_nested_attributes_for :tasks
 
   def new_project
